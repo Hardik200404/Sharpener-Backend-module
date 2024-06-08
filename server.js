@@ -1,9 +1,33 @@
-let http=require('http')
+const express=require('express');
+const app=express();
 
-let server=http.createServer((req,res)=>{
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.write('Hi my name is Hardik');
-    res.end();
+let port=4000
+
+//greet
+app.get('/',function(req,res){
+    res.writeHead(200)
+    res.end('Hi my name is Hardik');
 })
 
-server.listen(4000)
+//home
+app.get('/home',function(req,res){
+    res.writeHead(200)
+    res.end('Welcome home');
+})
+
+//about
+app.get('/about',function(req,res){
+    res.writeHead(200)
+    res.end('Welcome to About Us page');
+})
+
+//node
+app.get('/node',function(req,res){
+    res.writeHead(200)
+    res.end('Welcome to my Node Js project');
+})
+
+
+app.listen(port,()=>{
+    console.log(`APP is running on port:${port}`);
+})
