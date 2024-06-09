@@ -3,30 +3,16 @@ const app=express();
 
 let port=4000
 
-//greet
-app.get('/',function(req,res){
-    res.writeHead(200)
-    res.end('Hi my name is Hardik');
+//middleware
+app.use(function(req,res,next){
+    console.log("In middleware")
+    next()
 })
 
 //home
-app.get('/home',function(req,res){
-    res.writeHead(200)
-    res.end('Welcome home');
+app.use(function(req,res,next){
+    res.send("Hello World")
 })
-
-//about
-app.get('/about',function(req,res){
-    res.writeHead(200)
-    res.end('Welcome to About Us page');
-})
-
-//node
-app.get('/node',function(req,res){
-    res.writeHead(200)
-    res.end('Welcome to my Node Js project');
-})
-
 
 app.listen(port,()=>{
     console.log(`APP is running on port:${port}`);
