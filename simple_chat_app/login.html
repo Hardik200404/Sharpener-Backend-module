@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>login</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Chat Box</a></li>
+            </ul>
+        </nav>
+    </header>
+    <form onsubmit="setItem(event)">
+        <input type='text' name='name' placeholder='Enter Username'></input>
+        <button type='submit'>Submit</button>
+    </form>
+
+    <script>
+        function setItem(event) {
+            // Set item in localStorage with data from the server
+            event.preventDefault();
+            const username = event.target.name.value;
+            localStorage.setItem('username',username);
+            event.target.name.value='';
+        }
+    </script>
+
+</body>
+</html>
