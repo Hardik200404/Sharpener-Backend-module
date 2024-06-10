@@ -3,11 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chats</title>
+    <title>Chat App</title>
+    <script>
+        window.onload=(event)=>{
+            let username=localStorage.getItem('username')
+            let input=document.createElement('input')
+            input.type='hidden'
+            input.name='username'
+            input.value=username
+            let form=document.getElementById('form')
+            form.appendChild(input)
+        }
+    </script>
 </head>
 <body>
-    <h4>Chats:</h4>
     <pre><%= content %></pre>
-    <a href="/">Chat Box</a>
+    <form id='form' action="/submit-form" method="post">
+        <input type='text' name='message' placeholder='Enter Message'></input>
+        <button type='submit'>Submit</button>
+    </form>
+    <a href="/login">LogIn</a>
 </body>
 </html>
