@@ -13,16 +13,20 @@
     </header>
     <form onsubmit="setItem(event)">
         <input type='text' name='name' placeholder='Enter Username'></input>
-        <button type='submit'>Submit</button>
+        <button type='submit'>LogIn</button>
     </form>
 
     <script>
         function setItem(event) {
             // Set item in localStorage with data from the server
             event.preventDefault();
+            //get username and store in localStorage
             const username = event.target.name.value;
             localStorage.setItem('username',username);
+            //make the input feild blank
             event.target.name.value='';
+            //redirect to chat box
+            window.location.href = '/'
         }
     </script>
 
