@@ -1,21 +1,9 @@
+let path=require('path')
+let root_dir=require('../utils/path')
+
 module.exports=function(app){
     app.get('/admin/add-product',(req,res)=>{
-        let html=`
-        <!DOCTYPE html>
-        <html>
-        <head><title>enter message</title></head>
-        <body>
-            <form action='/admin/add-product' method='POST'>
-                <input type='text' name='product'></input>
-                <input type='text' name='size'></input>
-                <button type='submit'>Submit</button>
-            </form>
-        </body>
-        </html>
-        `
-        res.writeHead(200, { 'Content-Type': 'text/html' });
-        res.write(html)
-        return res.end()
+        res.sendFile(path.join(root_dir,'/views/add-product.html'))
     }),
     app.post('/admin/add-product',(req,res)=>{
         console.log("'",req.body.product,"' Added as Product")
