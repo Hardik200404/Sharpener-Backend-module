@@ -3,6 +3,7 @@ const path = require('path')
 
 const app=express();
 app.use(express.urlencoded({ extended: true }))
+app.use(express.static(path.join(__dirname,'public')))
 
 require('./routes/admin_routes')(app)
 require('./routes/shop_routes')(app)
