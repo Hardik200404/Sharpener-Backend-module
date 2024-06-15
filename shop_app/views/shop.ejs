@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Shop</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+    <%- include('includes/head_nav.ejs') %>
+    <main>
+        <% if (prods.length > 0) { %>
+            <% for (let product of prods) { %>
+                <p><%= product.title %></p>
+            <% } %>
+        <% } else { %>
+            <h1>No Products Found!</h1>
+        <% } %>
+    </main>
+    <%- include('includes/foot_nav.ejs') %>
+</body>
+
+</html>

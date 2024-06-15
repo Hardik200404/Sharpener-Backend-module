@@ -1,17 +1,23 @@
 let path=require('path')
 let root_dir=require('../utils/path')
 
+let products=[]
+
 exports.add_product_get=(req,res)=>{
-    res.sendFile(path.join(root_dir,'/views/add-product.html'))
+    res.render('../views/add-product', {
+        path: '/admin/add-product',
+    });
 }
 
-exports.add_product_post=(req,res)=>{
-    console.log("'",req.body.title,"' Added as Product")
-    res.statusCode=302
-    res.setHeader('Location','/admin/add-product')
-    return res.end()
+exports.add_product_post=(req,res)=>{   
+    products.push({ title: req.body.title });
+    console.log(products)
+    res.redirect('/shop');
 }
 
 exports.shop=(req,res)=>{
-    res.sendFile(path.join(root_dir,'/views/shop.html'))
+    res.render('../views/shop', {
+        prods: products,
+        path: '/shop',
+    });
 }
