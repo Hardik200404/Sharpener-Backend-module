@@ -1,7 +1,4 @@
-let path=require('path')
-let root_dir=require('../utils/path')
-
-let products=[]
+let Product=require('../models/product_model')
 
 exports.add_product_get=(req,res)=>{
     res.render('../views/add-product', {
@@ -10,14 +7,16 @@ exports.add_product_get=(req,res)=>{
 }
 
 exports.add_product_post=(req,res)=>{   
-    products.push({ title: req.body.title });
-    console.log(products)
+    let new_product=new Product(req.body.title)
+    new_product.save()
     res.redirect('/shop');
 }
 
 exports.shop=(req,res)=>{
-    res.render('../views/shop', {
-        prods: products,
-        path: '/shop',
-    });
+    Product.fetch_all((products)=>{
+        res.render('../views/shop', {
+            prods: products,
+            path: '/shop',
+        });
+    })
 }
